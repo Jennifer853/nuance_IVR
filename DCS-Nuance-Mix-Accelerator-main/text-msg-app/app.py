@@ -11,10 +11,10 @@ from azure.communication.email import EmailClient
 # creating a Flask app
 app = Flask(__name__)
 
-headers = {
-  'Ocp-Apim-Subscription-Key': 'a804d41345194b1ea518cc6424324d9e',
-  'Content-Type': 'application/json'
-}
+# headers = {
+#   'Ocp-Apim-Subscription-Key': 'a804d41345194b1ea518cc6424324d9e',
+#   'Content-Type': 'application/json'
+# }
 
 # on the terminal type: curl http://127.0.0.1:5000/
 # returns hello world when we use GET.
