@@ -6,6 +6,11 @@ import os
 import pyodbc
 from azure.communication.sms import SmsClient
 from azure.communication.email import EmailClient
+from OpenSSL import SSL
+
+# context = SSL.Context(SSL.TLSv1_2_METHOD)
+# context.use_privatekey_file('server.key')
+# context.use_certificate_file('server.crt')
 
 
 # creating a Flask app
@@ -93,4 +98,6 @@ def res_id_mail():
 # driver function
 if __name__ == '__main__':
 #   gunicorn --bind=0.0.0.0 --timeout 600 app:app --worker-class=gevent
-    app.run(host= '0.0.0.0',debug=True, port=8080)
+#     app.run(host= '0.0.0.0',debug=True, port=8080)
+#     app.run(host='0.0.0.0', debug=True, ssl_context=context)
+    app.run(ssl_context='adhoc', port=443)
