@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<project xmlns:nuance="https://developer.nuance.com/mix/nlu/trsx" xml:lang="eng-USA" nuance:version="2.6" nuance:enginePackVersion="hosted">
+    <metadata>
+        <entry key="created_at">2020-02-12 16:42:44+00:00</entry>
+        <entry key="created_at">2020-03-30 19:21:43+00:00</entry>
+        <entry key="created_by">Jane Smith</entry>
+        <entry key="created_by">jane.smith@company.com</entry>
+        <entry key="description">Sample model for demonstration of 1 simple intent and two concepts</entry>
+        <entry key="short_name">Coffee Maker Sample Model</entry>
+        <entry key="source">Nuance Communications</entry>
+        <entry key="type">sample</entry>
+        <entry key="version">2.0.0</entry>
+    </metadata>
+    <sources>
+        <source name="nuance_custom_data" displayName="nuance_custom_data" version="1.0" type="CUSTOM" useForOOV="true"/>
+    </sources>
+    <ontology base="http://localhost:8080/resources/ontology-1.0.xml">
+        <intents>
+            <intent name="greeting"/>
+            <intent name="Agent">
+                <links>
+                    <link conceptref="book_time"/>
+                    <link conceptref="Support_Teams"/>
+                    <link conceptref="call_time"/>
+                </links>
+            </intent>
+            <intent name="goodbye"/>
+            <intent name="BOOK_APPOINTMENT">
+                <links>
+                    <link conceptref="DOCTOR"/>
+                    <link conceptref="nuance_CALENDARX"/>
+                    <link conceptref="book_date"/>
+                    <link conceptref="DATE"/>
+                    <link conceptref="book_time"/>
+                </links>
+            </intent>
+        </intents>
+        <concepts>
+            <concept name="Support_Teams" dataType="alphanum"/>
+            <concept name="DOCTOR" dataType="alphanum">
+                <relations>
+                    <relation type="hasReferrers" conceptref="REF_PERSON"/>
+                </relations>
+            </concept>
+            <concept name="call_time" dataType="time">
+                <relations>
+                    <relation type="isA" conceptref="TIME"/>
+                </relations>
+            </concept>
+            <concept name="book_time" dataType="time">
+                <relations>
+                    <relation type="isA" conceptref="TIME"/>
+                </relations>
+            </concept>
+            <concept name="Custom_YES_NO" dataType="yes_no"/>
+            <concept name="book_date" dataType="date">
+                <relations>
+                    <relation type="isA" conceptref="DATE"/>
+                </relations>
+            </concept>
+        </concepts>
+    </ontology>
+    <dictionaries>
+        <dictionary conceptref="Support_Teams">
+            <entry literal="Billing and Insurance Team" value="Billing and Insurance Team"/>
+            <entry literal="Patient Feedback" value="Patient Feedback Team"/>
+            <entry literal="Prescription" value="Prescription Support Team"/>
+            <entry literal="bill" value="Billing and Insurance Team"/>
+            <entry literal="billing" value="Billing and Insurance Team"/>
+            <entry literal="charges" value="Billing and Insurance Team"/>
+            <entry literal="insurance" value="Billing and Insurance Team"/>
+            <entry literal="medication" value="Prescription Support Team"/>
+            <entry literal="prescription" value="Prescription Support Team"/>
+        </dictionary>
+        <dictionary conceptref="DOCTOR">
+            <entry literal="Alice" value="Dr. Alice"/>
+            <entry literal="Dr. Alice" value="Dr. Alice"/>
+            <entry literal="Dr. Kevin" value="Dr. Kevin"/>
+            <entry literal="Kevin" value="Dr. Kevin"/>
+            <entry literal="Kevin Ng" value="Dr. Kevin"/>
+            <entry literal="alice" value="Dr. Alice"/>
+        </dictionary>
+        <dictionary conceptref="Custom_YES_NO">
+            <entry literal="Alright , go ahead" value="yes"/>
+            <entry literal="Awesome , please do" value="yes"/>
+            <entry literal="Can you share more information" value="yes"/>
+            <entry literal="Cool" value="yes"/>
+            <entry literal="Go ahead" value="yes"/>
+            <entry literal="I don’t want it" value="no"/>
+            <entry literal="I need more information" value="yes"/>
+            <entry literal="Nah" value="no"/>
+            <entry literal="Nah!" value="no"/>
+            <entry literal="Need more info" value="yes"/>
+            <entry literal="Never" value="no"/>
+            <entry literal="No" value="no"/>
+            <entry literal="No, not interested" value="no"/>
+            <entry literal="No never" value="no"/>
+            <entry literal="None" value="no"/>
+            <entry literal="Nope" value="no"/>
+            <entry literal="Not at all" value="no"/>
+            <entry literal="Not interested" value="no"/>
+            <entry literal="Of course" value="yes"/>
+            <entry literal="Ofcourse" value="yes"/>
+            <entry literal="Please continue" value="yes"/>
+            <entry literal="Please do" value="yes"/>
+            <entry literal="Please do that" value="yes"/>
+            <entry literal="Sure" value="yes"/>
+            <entry literal="Tell me more details" value="yes"/>
+            <entry literal="That would be great" value="yes"/>
+            <entry literal="Yeah" value="yes"/>
+            <entry literal="Yeah, of course" value="yes"/>
+            <entry literal="Yeah ofcourse" value="yes"/>
+            <entry literal="Yepp" value="yes"/>
+            <entry literal="Yes" value="yes"/>
+            <entry literal="Yes , very well" value="yes"/>
+            <entry literal="Yes let's get more details" value="yes"/>
+            <entry literal="Yes please" value="yes"/>
+            <entry literal="Yup" value="yes"/>
+            <entry literal="alright , go ahead" value="yes"/>
+            <entry literal="awesome , please do" value="yes"/>
+            <entry literal="can you share more information" value="yes"/>
+            <entry literal="cool" value="yes"/>
+            <entry literal="go ahead" value="yes"/>
+            <entry literal="i don’t want it" value="no"/>
+            <entry literal="i need more information" value="yes"/>
+            <entry literal="nah" value="no"/>
+            <entry literal="nah!" value="no"/>
+            <entry literal="need more info" value="yes"/>
+            <entry literal="never" value="no"/>
+            <entry literal="no" value="no"/>
+            <entry literal="no, not interested" value="no"/>
+            <entry literal="no never" value="no"/>
+            <entry literal="none" value="no"/>
+            <entry literal="nope" value="no"/>
+            <entry literal="not at all" value="no"/>
+            <entry literal="not interested" value="no"/>
+            <entry literal="of course" value="yes"/>
+            <entry literal="ofcourse" value="yes"/>
+            <entry literal="please continue" value="yes"/>
+            <entry literal="please do" value="yes"/>
+            <entry literal="please do that" value="yes"/>
+            <entry literal="tell me more details" value="yes"/>
+            <entry literal="that would be great" value="yes"/>
+            <entry literal="yeah" value="yes"/>
+            <entry literal="yeah, of course" value="yes"/>
+            <entry literal="yeah ofcourse" value="yes"/>
+            <entry literal="yepp" value="yes"/>
+            <entry literal="yes" value="yes"/>
+            <entry literal="yes , very well" value="yes"/>
+            <entry literal="yes let's get more details" value="yes"/>
+            <entry literal="yes please" value="yes"/>
+            <entry literal="yup" value="yes"/>
+        </dictionary>
+    </dictionaries>
+    <samples>
+        <sample count="1" excluded="true" fullyVerified="false">I want a small coffee</sample>
+        <sample count="1" excluded="true" fullyVerified="false">I want a double espresso</sample>
+        <sample count="1" excluded="true" fullyVerified="false">make me a large coffee</sample>
+        <sample count="1" excluded="true" fullyVerified="false">give me a coffee , large</sample>
+        <sample count="1" excluded="true" fullyVerified="false">a small mocha</sample>
+        <sample count="1" excluded="true" fullyVerified="false">i'd like a medium cappuccino</sample>
+        <sample count="1" excluded="true" fullyVerified="false">small coffee .</sample>
+        <sample count="1" excluded="true" fullyVerified="false">can i get a large latte ?</sample>
+        <sample count="1" excluded="true" fullyVerified="false">Can I get a large coffee</sample>
+        <sample count="1" excluded="true" fullyVerified="false">small mocha</sample>
+        <sample count="1" excluded="true" fullyVerified="false">a medium latte please</sample>
+        <sample count="1" excluded="true" fullyVerified="false">let me get a small americano</sample>
+        <sample count="1" excluded="true" fullyVerified="false">cappuccino</sample>
+        <sample count="1" excluded="true" fullyVerified="false">gimme a double espresso</sample>
+        <sample count="1" excluded="true" fullyVerified="false">make me a latte</sample>
+        <sample count="1" excluded="true" fullyVerified="false">i'll take a small coffee</sample>
+        <sample count="1" excluded="true" fullyVerified="false">i'd like a double cappuccino</sample>
+        <sample count="1" excluded="true" fullyVerified="false">just a small latte please</sample>
+        <sample count="1" excluded="true" fullyVerified="false">can i get an americano</sample>
+        <sample count="1" excluded="true" fullyVerified="false">mocha latte</sample>
+        <sample count="1" excluded="true" fullyVerified="false">a mocha latte please</sample>
+        <sample count="1" excluded="true" fullyVerified="false">one espresso</sample>
+        <sample count="1" excluded="true" fullyVerified="false">grande cafe latte</sample>
+        <sample count="1" excluded="true" fullyVerified="false">a grande cafe latte</sample>
+        <sample count="1" excluded="true" fullyVerified="false">i want a large mocha</sample>
+        <sample count="1" excluded="true" fullyVerified="false">brew me an americano</sample>
+        <sample count="1" excluded="true" fullyVerified="false">an americano please , small</sample>
+        <sample count="1" excluded="true" fullyVerified="false">make me an americano large</sample>
+        <sample count="1" excluded="true" fullyVerified="false">make a small mocha</sample>
+        <sample count="1" excluded="true" fullyVerified="false">i'll have a medium cap</sample>
+        <sample count="1" excluded="true" fullyVerified="false">a venti cafe latte</sample>
+        <sample count="1" excluded="true" fullyVerified="false">a medium espresso please</sample>
+        <sample count="1" excluded="true" fullyVerified="false">small coffee</sample>
+        <sample count="1" excluded="true" fullyVerified="false">gimme a mocha</sample>
+        <sample count="1" excluded="true" fullyVerified="false">small cafe latte please</sample>
+        <sample count="1" excluded="true" fullyVerified="false">large coffee please</sample>
+        <sample count="1" excluded="true" fullyVerified="false">i think i'll have a medium latte</sample>
+        <sample count="1" excluded="true" fullyVerified="false">i'll try a small mocha</sample>
+        <sample count="1" excluded="true" fullyVerified="false">an espresso please</sample>
+        <sample intentref="goodbye" count="1" excluded="false" fullyVerified="false">No Thanks you</sample>
+        <sample intentref="goodbye" count="1" excluded="false" fullyVerified="false">No Thanks</sample>
+        <sample intentref="BOOK_APPOINTMENT" count="1" excluded="false" fullyVerified="true">OK I choose<annotation conceptref="DOCTOR">Kevin</annotation>
+        </sample>
+        <sample intentref="Agent" count="1" excluded="false" fullyVerified="false">I have some query about my prescription . Is it possible to speak to someone today ?</sample>
+        <sample intentref="BOOK_APPOINTMENT" count="1" excluded="false" fullyVerified="true">Yes , I want to book an appointment with<annotation conceptref="DOCTOR">Dr. Kevin</annotation>. Is<annotation conceptref="book_date">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">Tuesday</annotation>
+                </annotation>
+            </annotation>possible ?</sample>
+        <sample intentref="greeting" count="1" excluded="false" fullyVerified="false">Hi</sample>
+        <sample intentref="greeting" count="1" excluded="false" fullyVerified="false">Hey</sample>
+        <sample intentref="greeting" count="1" excluded="false" fullyVerified="false">Are you there</sample>
+        <sample intentref="greeting" count="1" excluded="false" fullyVerified="false">Hi there</sample>
+        <sample intentref="greeting" count="1" excluded="false" fullyVerified="false">whats up</sample>
+        <sample intentref="greeting" count="1" excluded="false" fullyVerified="false">Hola</sample>
+        <sample intentref="greeting" count="1" excluded="false" fullyVerified="false">Ayt ?</sample>
+        <sample intentref="greeting" count="1" excluded="false" fullyVerified="false">Hiya</sample>
+        <sample intentref="greeting" count="1" excluded="false" fullyVerified="false">Hey there</sample>
+        <sample intentref="greeting" count="1" excluded="false" fullyVerified="false">Heyy</sample>
+        <sample intentref="goodbye" count="1" excluded="false" fullyVerified="false">goodbye</sample>
+        <sample intentref="goodbye" count="1" excluded="false" fullyVerified="false">talk to you later</sample>
+        <sample intentref="goodbye" count="1" excluded="false" fullyVerified="false">bai</sample>
+        <sample intentref="goodbye" count="1" excluded="false" fullyVerified="false">see ya</sample>
+        <sample intentref="goodbye" count="1" excluded="false" fullyVerified="false">later</sample>
+        <sample intentref="goodbye" count="1" excluded="false" fullyVerified="false">bye now</sample>
+        <sample intentref="goodbye" count="1" excluded="false" fullyVerified="false">good bye</sample>
+        <sample intentref="goodbye" count="1" excluded="false" fullyVerified="false">Thanks , bye</sample>
+        <sample intentref="goodbye" count="1" excluded="false" fullyVerified="false">cya</sample>
+        <sample intentref="goodbye" count="1" excluded="false" fullyVerified="false">bye</sample>
+        <sample intentref="goodbye" count="1" excluded="false" fullyVerified="false">ttyl</sample>
+        <sample intentref="BOOK_APPOINTMENT" count="1" excluded="false" fullyVerified="true">Please book for<annotation conceptref="book_time">
+                <annotation conceptref="TIME">
+                    <annotation conceptref="nuance_CALENDARX">1 PM</annotation>
+                </annotation>
+            </annotation>. Thanks !</sample>
+        <sample intentref="BOOK_APPOINTMENT" count="1" excluded="false" fullyVerified="true">Next<annotation conceptref="book_date">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">Friday</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="BOOK_APPOINTMENT" count="1" excluded="false" fullyVerified="true">Can I make it<annotation conceptref="book_date">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">Friday</annotation>
+                </annotation>
+            </annotation>
+            <annotation conceptref="book_time">
+                <annotation conceptref="TIME">
+                    <annotation conceptref="nuance_CALENDARX">12 PM</annotation>
+                </annotation>
+            </annotation>?</sample>
+        <sample intentref="BOOK_APPOINTMENT" count="1" excluded="false" fullyVerified="true">May be on<annotation conceptref="book_date">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">Friday</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="BOOK_APPOINTMENT" count="1" excluded="false" fullyVerified="true">On next<annotation conceptref="book_date">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">Monday</annotation>
+                </annotation>
+            </annotation>.</sample>
+        <sample intentref="BOOK_APPOINTMENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="book_time">
+                <annotation conceptref="TIME">
+                    <annotation conceptref="nuance_CALENDARX">3 PM</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="BOOK_APPOINTMENT" count="1" excluded="false" fullyVerified="true">I would like to book at<annotation conceptref="book_time">
+                <annotation conceptref="TIME">
+                    <annotation conceptref="nuance_CALENDARX">13:00</annotation>
+                </annotation>
+            </annotation>on<annotation conceptref="book_date">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">this Wednesday</annotation>
+                </annotation>
+            </annotation>.</sample>
+        <sample intentref="BOOK_APPOINTMENT" count="1" excluded="false" fullyVerified="true">on<annotation conceptref="book_date">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">17 Oct</annotation>
+                </annotation>
+            </annotation>,<annotation conceptref="book_time">
+                <annotation conceptref="TIME">
+                    <annotation conceptref="nuance_CALENDARX">3 PM</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="BOOK_APPOINTMENT" count="1" excluded="false" fullyVerified="true">Is<annotation conceptref="DOCTOR">Kevin</annotation>available on<annotation conceptref="book_date">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">27th Sep</annotation>
+                </annotation>
+            </annotation>? May be<annotation conceptref="book_time">
+                <annotation conceptref="TIME">
+                    <annotation conceptref="nuance_CALENDARX">12PM</annotation>
+                </annotation>
+            </annotation>or<annotation conceptref="book_time">
+                <annotation conceptref="TIME">
+                    <annotation conceptref="nuance_CALENDARX">1 PM</annotation>
+                </annotation>
+            </annotation>?</sample>
+        <sample intentref="BOOK_APPOINTMENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="book_date">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">Monday</annotation>
+                </annotation>
+            </annotation>
+            <annotation conceptref="book_time">
+                <annotation conceptref="TIME">
+                    <annotation conceptref="nuance_CALENDARX">3 PM</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="BOOK_APPOINTMENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="book_time">
+                <annotation conceptref="TIME">
+                    <annotation conceptref="nuance_CALENDARX">1pm</annotation>
+                </annotation>
+            </annotation>on<annotation conceptref="book_date">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">Next Thursday</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="BOOK_APPOINTMENT" count="1" excluded="false" fullyVerified="true">
+            <annotation conceptref="book_time">
+                <annotation conceptref="TIME">
+                    <annotation conceptref="nuance_CALENDARX">1PM</annotation>
+                </annotation>
+            </annotation>on<annotation conceptref="book_date">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">24 Sep</annotation>
+                </annotation>
+            </annotation>
+        </sample>
+        <sample intentref="BOOK_APPOINTMENT" count="1" excluded="false" fullyVerified="true">Does<annotation conceptref="DOCTOR">Alice</annotation>free for<annotation conceptref="book_date">
+                <annotation conceptref="DATE">
+                    <annotation conceptref="nuance_CALENDARX">2 Oct</annotation>
+                </annotation>
+            </annotation>?</sample>
+        <sample intentref="goodbye" count="1" excluded="false" fullyVerified="false">No . That will be all . Thank you so much !</sample>
+        <sample intentref="goodbye" count="1" excluded="false" fullyVerified="false">That is all for me .</sample>
+        <sample intentref="Agent" count="1" excluded="false" fullyVerified="false">transfer to agent</sample>
+        <sample intentref="Agent" count="1" excluded="false" fullyVerified="false">can I connect with a live agent right now ?</sample>
+        <sample intentref="Agent" count="1" excluded="false" fullyVerified="false">I prefer to chat with a human agent .</sample>
+        <sample intentref="Agent" count="1" excluded="false" fullyVerified="false">Let me talk to a live person , please</sample>
+        <sample intentref="Agent" count="1" excluded="false" fullyVerified="false">Please connect me with a live agent .</sample>
+        <sample intentref="Agent" count="1" excluded="false" fullyVerified="false">I need assistant from a human .</sample>
+        <sample intentref="Agent" count="1" excluded="false" fullyVerified="false">Can you put me through to a human ?</sample>
+        <sample intentref="Agent" count="1" excluded="false" fullyVerified="false">Please transfer this chat to ta customer service representative .</sample>
+        <sample intentref="Agent" count="1" excluded="false" fullyVerified="true">I have a question about my recent hospital<annotation conceptref="Support_Teams">bill</annotation>. Can you help me understand the<annotation conceptref="Support_Teams">charges</annotation>?</sample>
+        <sample intentref="Agent" count="1" excluded="false" fullyVerified="true">I believe there is an error on my<annotation conceptref="Support_Teams">bill</annotation>. Who can I speak with to get this corrected ?</sample>
+        <sample intentref="Agent" count="1" excluded="false" fullyVerified="true">Yes , but I have some query about my<annotation conceptref="Support_Teams">prescription</annotation>. Is it possible to speak to someone today ?</sample>
+        <sample intentref="Agent" count="1" excluded="false" fullyVerified="true">Hi I need help with my<annotation conceptref="Support_Teams">prescription</annotation>. Can you assist me ?</sample>
+        <sample intentref="Agent" count="1" excluded="false" fullyVerified="true">I am running low on my<annotation conceptref="Support_Teams">medication</annotation>. How can I request a refill ?</sample>
+    </samples>
+</project>

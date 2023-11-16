@@ -1,0 +1,6 @@
+__pycache__
+*.zip
+.vscode
+.venv
+test
+.idea

@@ -1,0 +1,16 @@
+FROM ubuntu:latest
+
+RUN apt-get update
+RUN apt install -y python3 python3-pip lsb-release curl sudo
+
+WORKDIR /app
+
+COPY ./sms-connector /app
+
+RUN bash /app/install_odb.sh
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+
+EXPOSE 80
+
+CMD ["python3", "app.py"]
+# CMD ["sh"]
