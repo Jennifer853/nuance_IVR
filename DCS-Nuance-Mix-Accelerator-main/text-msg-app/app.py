@@ -49,9 +49,10 @@ def res_id_sms(message, phoneno, from_number):
   
 @app.route('/sms_res_id', methods = ['POST'])
 def sms_res_id():
-    phoneno = request.json["phone_no"]
-    message = request.json["message"]
-    from_number = request.json["from_number"]
+    request_json = json.loads(request.data)
+    phoneno = request_json["phone_no"]
+    message = request_json["message"]
+    from_number = request_json["from_number"]
     res_id_sms(message, phoneno, from_number)
 
     return jsonify({"returnCode" : "0"})
